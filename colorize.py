@@ -31,6 +31,7 @@ image = cv2.imread(args["image"])
 scaled = image.astype("float32") / 255.0
 lab = cv2.cvtColor(scaled, cv2.COLOR_BGR2LAB)
 
+#resize the Lab image to 224x224 (the dimensions the colorization network accepts), split channels, extract the "L" channel, and then perform mean centering
 resized = cv2.resize(lab, (224,224))
 L = cv2.split(resized)[0]
 L -= 50
